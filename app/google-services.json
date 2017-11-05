@@ -1,0 +1,194 @@
+{
+  "project_info": {
+    "project_number": "982700536511",
+    "firebase_url": "https://myfirebase-87f14.firebaseio.com",
+    "project_id": "myfirebase-87f14",
+    "storage_bucket": "myfirebase-87f14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982700536511:android:b843e695e526a9a7",
+        "android_client_info": {
+          "package_name": "cs133.minisafewayproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982700536511-gu689prjm2vqc61akmpt5pgh3ur45rtp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "d4962aa129fe3ebe1ec10be72bcc292d738f57cd"
+          }
+        },
+        {
+          "client_id": "982700536511-38akb4a4l879rmt2s5nn2fhqces660nl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "6a63cf5b315d52b973a0a52b3f6c14285b3e0379"
+          }
+        },
+        {
+          "client_id": "982700536511-c1m9nf2stiai7ljf3u754f38lf188hl0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "a47f61f031136331418a906dedd1c5edb42168ad"
+          }
+        },
+        {
+          "client_id": "982700536511-nlanpluusjs28h5cvo61jknds8iujcmr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "e990933f68f908f1c6c0caa704299c959925bbff"
+          }
+        },
+        {
+          "client_id": "982700536511-nulhoabscf923tc9j2kgt1l52cts3gqp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "d4b284fb2a9fa8159c9199cb397749f939acb22b"
+          }
+        },
+        {
+          "client_id": "982700536511-ph4inmruo0smsi3u95njsgh1oetcssuf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "12319500d1d70ab9d46cca376f6c5e116ca57ca7"
+          }
+        },
+        {
+          "client_id": "982700536511-k634023bu9680v5rj9eiaq2otoqt5ks9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "3700b9ca3535b9ac3addd0709c62f27694f05090"
+          }
+        },
+        {
+          "client_id": "982700536511-dnvfqcnaocqtr3dalvv4j2io3bmlvjmp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "39681f3b494efe44c9d1a42fa97c83ba872f1499"
+          }
+        },
+        {
+          "client_id": "982700536511-8ss7qcfktl1vha0k2mvvlaa0dqd552mp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs133.minisafewayproject",
+            "certificate_hash": "5cd42aad30482af1b5aede425968c564d651ce8c"
+          }
+        },
+        {
+          "client_id": "982700536511-e4eun6asrntnom6efc2ivfv73r2lghr1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmYhj-vPHsln5304V3jbi-M7j3UqDY1IE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982700536511-e4eun6asrntnom6efc2ivfv73r2lghr1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982700536511:android:46dbcaba7fbf0ad1",
+        "android_client_info": {
+          "package_name": "quy.test.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982700536511-e4eun6asrntnom6efc2ivfv73r2lghr1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmYhj-vPHsln5304V3jbi-M7j3UqDY1IE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982700536511:android:80a56545e46c1e4c",
+        "android_client_info": {
+          "package_name": "com.example.nguye.minisafeway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982700536511-kuhg59phodful9othgib0cto69kbsnp1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "5cd42aad30482af1b5aede425968c564d651ce8c"
+          }
+        },
+        {
+          "client_id": "982700536511-e4eun6asrntnom6efc2ivfv73r2lghr1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmYhj-vPHsln5304V3jbi-M7j3UqDY1IE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982700536511-e4eun6asrntnom6efc2ivfv73r2lghr1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
