@@ -1,4 +1,5 @@
 package com.example.nguye.minisafeway;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.nguye.minisafeway.Common.Common;
+import com.example.nguye.minisafeway.Model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -21,8 +26,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-    /**
+/**
      *Login class is used to get user's username and password. When user clicks login, the database will
      * check if the user account exist, it it does , it will prompt to users account page.
      */
@@ -36,13 +46,56 @@ import com.google.firebase.auth.GoogleAuthProvider;
         GoogleApiClient mGoogleApiClient;
         FirebaseAuth.AuthStateListener mAuthListener;
 
+        EditText username, password;
+        Button btnSignIn;
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
+            username = (EditText) findViewById(R.id.user_name);
+            password = (EditText) findViewById(R.id.password);
             button = (SignInButton) findViewById(R.id.bt_login);
+            btnSignIn = (Button) findViewById(R.id.btnSignIn);
+
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference table_user = database.getReference("User");
+
+            btnSignIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final ProgressDialog mDialog = new ProgressDialog(MainActivity.this);
+                    mDialog.setMessage("Please waiting...");
+                    mDialog.show();
+
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.child(username.getText().toString()).exists()) {
+                                mDialog.dismiss();
+                                User user = dataSnapshot.child(username.getText().toString()).getValue(User.class);
+                                if (user.getPassword().equals(password.getText().toString())) {
+                                    Intent homeIntent = new Intent(MainActivity.this, Home.class);
+                                    Common.currentUser = user;
+                                    startActivity(homeIntent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
+                                }
+                            } else{
+                                Toast.makeText(MainActivity.this, "Please Sign Up first", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            });
             mAuth = FirebaseAuth.getInstance();
 
             button.setOnClickListener(new View.OnClickListener() {
@@ -51,14 +104,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
                     signIn();
                 }
             });
-
-//            b = (Button) findViewById(R.id.bSignup);
-//            b.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    startActivity(new Intent(Login.this,Guest.class));
-//                }
-//            });
 
             mAuthListener = new FirebaseAuth.AuthStateListener() {
                 @Override
@@ -87,7 +132,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
         }
 
-        //
+
         @Override
         protected void onStart() {
             super.onStart();
