@@ -1,5 +1,6 @@
 package com.example.nguye.minisafeway;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +17,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Interface.ItemClickListener;
 import com.example.nguye.minisafeway.Model.Category;
 import com.example.nguye.minisafeway.ViewHolder.MenuViewHolder;
@@ -24,6 +28,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
 
 public class Home extends AppCompatActivity
@@ -35,15 +40,16 @@ public class Home extends AppCompatActivity
     LinearLayoutManager layoutManager;
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
-
+    TextView txtFullName;
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        mAuth.addAuthStateListener(mAuthListener);
+//    }
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +57,8 @@ public class Home extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Menu");
         setSupportActionBar(toolbar);
+
+
 
         database = FirebaseDatabase.getInstance();
         category = database.getReference("Category");
@@ -73,7 +81,9 @@ public class Home extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+//        View headerView = navigationView.getHeaderView(1);
+//        txtFullName = (TextView)headerView.findViewById(R.id.txtFullName);
+//        txtFullName.setText(Common.currentUser.getName());
 
         recycler_menu = (RecyclerView) findViewById(R.id.recycler_menu);
         recycler_menu.setHasFixedSize(true);
@@ -87,7 +97,7 @@ public class Home extends AppCompatActivity
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() == null){
-                    startActivity(new Intent(Home.this, MainActivity.class));
+                    startActivity(new Intent(Home.this, Signin.class));
                 }
             }
         };
@@ -136,20 +146,20 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -167,6 +177,7 @@ public class Home extends AppCompatActivity
 
         } else if (id == R.id.nav_out) {
             mAuth.signOut();
+            startActivity(new Intent(Home.this, Signin.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -1,4 +1,5 @@
 package com.example.nguye.minisafeway;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,28 +38,28 @@ import com.google.firebase.database.ValueEventListener;
      * check if the user account exist, it it does , it will prompt to users account page.
      */
 
-    public class MainActivity extends AppCompatActivity {
+    public class Signin extends AppCompatActivity {
 
         FirebaseAuth mAuth;
         SignInButton button;
-        Button b;
         private final static int RC_SIGN_IN = 2;
         GoogleApiClient mGoogleApiClient;
         FirebaseAuth.AuthStateListener mAuthListener;
 
         EditText username, password;
-        Button btnSignIn;
+        Button btnSignIn,btnSignUp;
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.signin);
 
             username = (EditText) findViewById(R.id.user_name);
             password = (EditText) findViewById(R.id.password);
             button = (SignInButton) findViewById(R.id.bt_login);
             btnSignIn = (Button) findViewById(R.id.btnSignIn);
+            btnSignUp = (Button) findViewById(R.id.btnSignUp);
 
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference table_user = database.getReference("User");
@@ -66,34 +67,47 @@ import com.google.firebase.database.ValueEventListener;
             btnSignIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final ProgressDialog mDialog = new ProgressDialog(MainActivity.this);
-                    mDialog.setMessage("Please waiting...");
-                    mDialog.show();
+                    if (validate(username.getText().toString())) dialoge();
+                    else {
+                        final ProgressDialog mDialog = new ProgressDialog(Signin.this);
+                        mDialog.setMessage("Please waiting...");
+                        mDialog.show();
 
-                    table_user.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.child(username.getText().toString()).exists()) {
-                                mDialog.dismiss();
-                                User user = dataSnapshot.child(username.getText().toString()).getValue(User.class);
-                                if (user.getPassword().equals(password.getText().toString())) {
-                                    Intent homeIntent = new Intent(MainActivity.this, Home.class);
-                                    Common.currentUser = user;
-                                    startActivity(homeIntent);
-                                    finish();
+                        table_user.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                if (dataSnapshot.child(username.getText().toString()).exists()) {
+                                    mDialog.dismiss();
+                                    User user = dataSnapshot.child(username.getText().toString()).getValue(User.class);
+                                    if (user.getPassword().equals(password.getText().toString())) {
+                                        Intent homeIntent = new Intent(Signin.this, Home.class);
+                                        Common.currentUser = user;
+                                        startActivity(homeIntent);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(Signin.this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
-                                    Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
+                                    mDialog.dismiss();
+                                    Toast.makeText(Signin.this, "Please Sign Up first", Toast.LENGTH_SHORT).show();
                                 }
-                            } else{
-                                Toast.makeText(MainActivity.this, "Please Sign Up first", Toast.LENGTH_SHORT).show();
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
 
-                        }
-                    });
+                            }
+                        });
+                    }
+                }
+            });
+
+            btnSignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(Signin.this, Signup.class);
+                    startActivity(i);
                 }
             });
             mAuth = FirebaseAuth.getInstance();
@@ -109,7 +123,7 @@ import com.google.firebase.database.ValueEventListener;
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     if(firebaseAuth.getCurrentUser() != null){
-                        startActivity(new Intent(MainActivity.this, Home.class));
+                        startActivity(new Intent(Signin.this, Home.class));
                     }
                 }
             };
@@ -124,7 +138,7 @@ import com.google.firebase.database.ValueEventListener;
                     .enableAutoManage(this /* FragmentActivity */, new GoogleApiClient.OnConnectionFailedListener() {
                         @Override
                         public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                            Toast.makeText(MainActivity.this,"Something went wrong",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signin.this,"Something went wrong",Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -162,7 +176,7 @@ import com.google.firebase.database.ValueEventListener;
                     Auth.GoogleSignInApi.signOut(mGoogleApiClient);
                 }
                 else {
-                    Toast.makeText(MainActivity.this,"Auth went wrong",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Signin.this,"Auth went wrong",Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -185,7 +199,7 @@ import com.google.firebase.database.ValueEventListener;
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w("TAG", "signInWithCredential:failure", task.getException());
-                                Toast.makeText(MainActivity.this, "Authentication failed.",
+                                Toast.makeText(Signin.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                                 //updateUI(null);
                             }
@@ -195,5 +209,17 @@ import com.google.firebase.database.ValueEventListener;
                     });
 
         }
+    public void dialoge() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setTitle("Username/Password not found!");
+        alertBuilder.setMessage("Please enter Username or Password");
+        alertBuilder.create().show();
+
     }
+
+    public boolean validate(String username) {
+            return username.equals("");
+    }
+
+}
 
