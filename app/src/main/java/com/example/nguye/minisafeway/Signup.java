@@ -41,24 +41,22 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final ProgressDialog mDialog = new ProgressDialog(Signup.this);
-                mDialog.setMessage("Please waiting...");
-                mDialog.show();
+//                final ProgressDialog mDialog = new ProgressDialog(Signup.this);
+                final AlertDialog OptionDialog = new AlertDialog.Builder(Signup.this).create();
+                OptionDialog.setTitle("Username is used");
+                OptionDialog.setMessage("Please enter different username");
+                OptionDialog.show();
 
                 table_user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        boolean t = false;
-                        if(!dataSnapshot.child(edtUsername.getText().toString()).exists()){
-                            mDialog.dismiss();
-                            User user = new User(edtName.getText().toString(),edtPassword.getText().toString());
+                        if(!dataSnapshot.child(edtUsername.getText().toString()).exists()) {
+                            OptionDialog.dismiss();
+                            User user = new User(edtName.getText().toString(), edtPassword.getText().toString());
                             table_user.child(edtUsername.getText().toString()).setValue(user);
-                            Toast.makeText(Signup.this,"Success",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
                             finish();
-                        } else{
-                            mDialog.dismiss();
-                            Toast.makeText(Signup.this,"Username is used!",Toast.LENGTH_SHORT).show();
-                        }
+                    }
                     }
 
                     @Override
