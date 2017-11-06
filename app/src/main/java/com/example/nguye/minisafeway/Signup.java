@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nguye.minisafeway.Model.Order;
+import com.example.nguye.minisafeway.Model.Request;
 import com.example.nguye.minisafeway.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,10 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Signup extends AppCompatActivity {
 
     EditText edtUsername, edtName, edtPassword;
     Button btnSignUp;
+    private List<Request> requests = new ArrayList<Request>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class Signup extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.password);
         edtUsername = (EditText) findViewById(R.id.user_name);
         btnSignUp = (Button) findViewById(R.id.btnSignup);
+
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
@@ -52,7 +59,7 @@ public class Signup extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(!dataSnapshot.child(edtUsername.getText().toString()).exists()) {
                             OptionDialog.dismiss();
-                            User user = new User(edtName.getText().toString(), edtPassword.getText().toString());
+                            User user = new User(edtUsername.getText().toString(),edtName.getText().toString(), edtPassword.getText().toString(),requests);
                             table_user.child(edtUsername.getText().toString()).setValue(user);
                             Toast.makeText(Signup.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
                             finish();

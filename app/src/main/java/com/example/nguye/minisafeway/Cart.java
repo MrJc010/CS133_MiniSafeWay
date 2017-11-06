@@ -32,8 +32,10 @@ public class Cart extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-    FirebaseDatabase database;
-    DatabaseReference requests;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    String currentUser = Common.currentUser.getId().toString();
+    DatabaseReference requests = database.getReference("User");
 
     TextView txtTotalPrice;
     Button btnPlace;
@@ -47,8 +49,11 @@ public class Cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        database = FirebaseDatabase.getInstance();
-        requests = database.getReference("Requests");
+
+        //requests = database.getReference("User");
+
+
+
 
         recyclerView = (RecyclerView) findViewById(R.id.listCart);
         recyclerView.setHasFixedSize(true);
@@ -93,7 +98,7 @@ public class Cart extends AppCompatActivity {
                         txtTotalPrice.getText().toString(),
                         cart
                 );
-                requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
+                requests.child(currentUser).child(String.valueOf(System.currentTimeMillis())).setValue(request);
 
                 //Delete cart
                 new Database(getBaseContext()).cleanCart();
