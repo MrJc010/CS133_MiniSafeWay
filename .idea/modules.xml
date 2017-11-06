@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MiniApp.iml" filepath="$PROJECT_DIR$/MiniApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CS133_MiniSafeWay.iml" filepath="$PROJECT_DIR$/CS133_MiniSafeWay.iml" />
+      <module fileurl="file://C:\Users\nguye\Desktop\CS133_MiniSafeWay\MiniApp.iml" filepath="C:\Users\nguye\Desktop\CS133_MiniSafeWay\MiniApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
