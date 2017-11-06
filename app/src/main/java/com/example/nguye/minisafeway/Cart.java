@@ -35,6 +35,7 @@ public class Cart extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     String currentUser = Common.currentUser.getId().toString();
+
     DatabaseReference requests = database.getReference("User");
 
     TextView txtTotalPrice;
@@ -48,7 +49,7 @@ public class Cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-
+        System.out.println(currentUser); //TESTING TO SEE IF THIS IS NULL
 
         //requests = database.getReference("User");
 

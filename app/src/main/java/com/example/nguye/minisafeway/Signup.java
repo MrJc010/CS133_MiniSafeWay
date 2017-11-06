@@ -58,6 +58,7 @@ public class Signup extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(!dataSnapshot.child(edtUsername.getText().toString()).exists()) {
+                            //mDialog.dismiss();
                             OptionDialog.dismiss();
                             User user = new User(edtUsername.getText().toString(),edtName.getText().toString(), edtPassword.getText().toString(),requests);
                             table_user.child(edtUsername.getText().toString()).setValue(user);
