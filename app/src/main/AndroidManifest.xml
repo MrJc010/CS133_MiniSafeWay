@@ -25,7 +25,11 @@
         <activity android:name=".FoodDetail" />
         <activity android:name=".Signup" />
         <activity android:name=".Home" />
-        <activity android:name=".Cart"></activity>
+        <activity android:name=".Cart" />
+        <activity
+            android:name=".Guest"
+            android:label="@string/title_activity_guest"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
