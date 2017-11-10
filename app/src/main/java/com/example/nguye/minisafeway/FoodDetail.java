@@ -1,10 +1,12 @@
 package com.example.nguye.minisafeway;
 
+import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +24,10 @@ import com.squareup.picasso.Picasso;
 
 public class FoodDetail extends AppCompatActivity {
 
-    TextView food_name, food_price, food_description;
+    TextView food_name, food_price, food_description,discount;
     ImageView food_image;
     CollapsingToolbarLayout collapsingToolbarLayout;
-    FloatingActionButton btnCart;
+    FloatingActionButton btnCart, home;
     ElegantNumberButton numberButton;
 
     String foodId= "";
@@ -65,6 +67,17 @@ public class FoodDetail extends AppCompatActivity {
         food_name = (TextView) findViewById(R.id.food_name);
         food_price = (TextView) findViewById(R.id.food_price);
         food_image = (ImageView) findViewById(R.id.img_food);
+        discount = (TextView) findViewById(R.id.discount);
+
+        home = (FloatingActionButton) findViewById(R.id.home);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(FoodDetail.this, Home.class);
+                startActivity(i);
+            }
+        });
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
@@ -92,6 +105,7 @@ public class FoodDetail extends AppCompatActivity {
                 food_price.setText(currentFood.getPrice());
                 food_name.setText(currentFood.getName());
                 food_description.setText(currentFood.getDescription());
+                discount.setText(currentFood.getDiscount());
             }
 
             @Override
