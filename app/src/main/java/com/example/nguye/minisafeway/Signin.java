@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 /**
      *Login class is used to get user's username and password. When user clicks login, the database will
      * check if the user account exist, it it does , it will prompt to users account page.
@@ -47,7 +49,7 @@ import com.google.firebase.database.ValueEventListener;
         FirebaseAuth.AuthStateListener mAuthListener;
 
         EditText username, password;
-        Button btnSignIn,btnSignUp;
+        Button btnSignIn,btnSignUp,btnGuest;
 
 
         @Override
@@ -60,7 +62,7 @@ import com.google.firebase.database.ValueEventListener;
             button = (SignInButton) findViewById(R.id.bt_login);
             btnSignIn = (Button) findViewById(R.id.btnSignIn);
             btnSignUp = (Button) findViewById(R.id.btnSignUp);
-
+            btnGuest = (Button) findViewById(R.id.btnGuest);
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference table_user = database.getReference("User");
 
@@ -107,6 +109,13 @@ import com.google.firebase.database.ValueEventListener;
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(Signin.this, Signup.class);
+                    startActivity(i);
+                }
+            });
+            btnGuest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(Signin.this, Guest.class);
                     startActivity(i);
                 }
             });
