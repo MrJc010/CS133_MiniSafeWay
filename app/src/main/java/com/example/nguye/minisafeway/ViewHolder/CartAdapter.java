@@ -89,6 +89,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
 
 
 
+        //
         TextView txtCount =(TextView) findViewById(R.id.cart_item_count);
         Button buttonInc= (Button) findViewById(R.id.bincrease);
         Button buttonDec= (Button) findViewById(R.id.bdecrease);
