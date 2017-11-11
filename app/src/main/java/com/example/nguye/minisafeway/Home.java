@@ -92,7 +92,9 @@ public class Home extends AppCompatActivity
 
         loadMenu();
 
+
         mAuth = FirebaseAuth.getInstance();
+        /*
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -101,6 +103,7 @@ public class Home extends AppCompatActivity
                 }
             }
         };
+        */
 
     }
 
@@ -178,7 +181,9 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_out) {
+            Common.currentUser.setName(null);
             mAuth.signOut();
+
             startActivity(new Intent(Home.this, Signin.class));
         }
 
