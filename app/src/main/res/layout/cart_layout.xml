@@ -40,13 +40,27 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+        <Button
+            android:id="@+id/bdecrease"
+            android:background="white"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="decreaseInteger"
+            android:text="-" />
 
         <ImageView
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginRight="16dp"
             android:id="@+id/cart_item_count"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginRight="16dp" />
+        <Button
+            android:id="@+id/bincrease"
+            android:background="white"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="increaseInteger"
+            android:text="+" />
 
     </LinearLayout>
 

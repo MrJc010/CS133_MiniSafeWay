@@ -25,19 +25,26 @@ import java.util.Locale;
 
 class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txt_cart_name,txt_price;
-    public ImageView img_cart_count;
+   // public ImageView img_cart_count;
+    public TextView cart_count;
+    ImageView plusitem;
+    ImageView minusitem;
+    int count=0;
+
 
     private ItemClickListener itemClickListener;
 
     public void setTxt_cart_name(TextView txt_cart_name){
-        this.txt_cart_name = txt_cart_name;
+        //this.txt_cart_name = txt_cart_name;
+        this.cart_count= cart_count;
     }
 
     public CartViewHolder(View itemView) {
         super(itemView);
         txt_cart_name = (TextView) itemView.findViewById(R.id.cart_item_name);
         txt_price = (TextView) itemView.findViewById(R.id.cart_item_price);
-        img_cart_count = (ImageView) itemView.findViewById(R.id.cart_item_count);
+        //img_cart_count = (ImageView) itemView.findViewById(R.id.cart_item_count);
+        cart_count= (TextView) itemView.findViewById(R.id.cart_item_count);
     }
 
     @Override
@@ -68,14 +75,42 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
 
     @Override
     public void onBindViewHolder(CartViewHolder holder, int position) {
-        TextDrawable drawable = TextDrawable.builder().buildRound(""+listData.get(position).getQuantity(), Color.RED);
-        holder.img_cart_count.setImageDrawable(drawable);
+        //TextDrawable drawable = TextDrawable.builder().buildRound(""+listData.get(position).getQuantity(), Color.RED);
+        //holder.img_cart_count.setImageDrawable(drawable);
 
         Locale locale = new Locale("en","US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
         int price = (Integer.parseInt(listData.get(position).getPrice()))*(Integer.parseInt((listData.get(position).getQuantity())));
         holder.txt_price.setText(fmt.format(price));
         holder.txt_cart_name.setText(listData.get(position).getProductName());
+        holder.cart_count.setText(fmt.format(getItemCount()));
+        holder.plusitem = (ImageView) itemView.findViewById(R.id.bincrease);
+        holder.minusitem = (ImageView) itemView.findViewById(R.id.bdecrease);
+
+
+
+        TextView txtCount =(TextView) findViewById(R.id.cart_item_count);
+        Button buttonInc= (Button) findViewById(R.id.bincrease);
+        Button buttonDec= (Button) findViewById(R.id.bdecrease);
+
+        buttonInc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count++;
+                cart_item_count.setText(String.valueOf(count));
+
+            }
+        });
+
+        buttonDec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                cart_item_count.setText(String.valueOf(count));
+
+            }
+        });
+
 
     }
 
