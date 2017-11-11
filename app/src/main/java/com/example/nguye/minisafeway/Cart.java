@@ -1,6 +1,7 @@
 package com.example.nguye.minisafeway;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,11 +33,14 @@ public class Cart extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-    FirebaseDatabase database;
-    DatabaseReference requests;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    String currentUser = Common.currentUser.getId().toString();
+
+    DatabaseReference requests = database.getReference("User");
 
     TextView txtTotalPrice;
-    Button btnPlace;
+    Button btnPlace,home;
 
     List<Order> cart = new ArrayList<>();
 
@@ -46,9 +50,12 @@ public class Cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        System.out.println(currentUser); //TESTING TO SEE IF THIS IS NULL
 
-        database = FirebaseDatabase.getInstance();
-        requests = database.getReference("Requests");
+        //requests = database.getReference("User");
+
+
+
 
         recyclerView = (RecyclerView) findViewById(R.id.listCart);
         recyclerView.setHasFixedSize(true);
@@ -88,12 +95,9 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Request request = new Request(
-                        Common.currentUser.getName(),
-                        edtAddress.getText().toString(),
-                        txtTotalPrice.getText().toString(),
                         cart
                 );
-                requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
+                requests.child(currentUser).child("History").child("foods").setValue(request);
 
                 //Delete cart
                 new Database(getBaseContext()).cleanCart();
