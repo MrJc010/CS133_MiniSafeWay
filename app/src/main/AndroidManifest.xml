@@ -26,7 +26,7 @@
         <activity android:name=".Signup" />
         <activity android:name=".Home" />
         <activity android:name=".Cart" />
-        <activity android:name=".History"></activity>
+        <activity android:name=".HistoryList"></activity>
     </application>
 
 </manifest>

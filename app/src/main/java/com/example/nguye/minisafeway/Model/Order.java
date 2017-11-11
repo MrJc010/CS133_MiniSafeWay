@@ -11,14 +11,17 @@ public class Order {
     private String Price;
     private String Discount;
 
+    private String UserId;
+
     public Order(){}
 
-    public Order(String productId, String productName, String quantity, String price, String discount) {
+    public Order(String productId, String productName, String quantity, String price, String discount, String userId) {
         ProductId = productId;
         ProductName = productName;
         Quantity = quantity;
         Price = price;
         Discount = discount;
+        UserId = userId;
     }
 
     public String getProductId() {
@@ -59,5 +62,13 @@ public class Order {
 
     public void setDiscount(String discount) {
         Discount = discount;
+    }
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
     }
 }

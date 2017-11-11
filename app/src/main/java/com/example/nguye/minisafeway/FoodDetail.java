@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Database.Database;
 import com.example.nguye.minisafeway.Model.Food;
 import com.example.nguye.minisafeway.Model.Order;
@@ -55,7 +56,8 @@ public class FoodDetail extends AppCompatActivity {
                         foodId, currentFood.getName(),
                         numberButton.getNumber(),
                         currentFood.getPrice(),
-                        currentFood.getDiscount()
+                        currentFood.getDiscount(),
+                        Common.currentUser.getId()
 
                 ));
 

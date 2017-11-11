@@ -37,7 +37,7 @@ public class Cart extends AppCompatActivity {
 
     String currentUser = Common.currentUser.getId().toString();
 
-    DatabaseReference requests = database.getReference("User");
+    DatabaseReference requests = database.getReference("History");
 
     TextView txtTotalPrice;
     Button btnPlace,home;
@@ -97,7 +97,10 @@ public class Cart extends AppCompatActivity {
                 Request request = new Request(
                         cart
                 );
-                requests.child(currentUser).child("History").child("foods").setValue(request);
+                for(int  x = 0 ; x < cart.size(); x++){
+                    requests.push().setValue(cart.get(x));
+                }
+
 
                 //Delete cart
                 new Database(getBaseContext()).cleanCart();

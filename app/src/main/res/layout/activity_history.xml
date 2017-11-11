@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:padding="16dp"
-    tools:context="com.example.nguye.minisafeway.History">
+    tools:context="com.example.nguye.minisafeway.Model.History">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listCart"
