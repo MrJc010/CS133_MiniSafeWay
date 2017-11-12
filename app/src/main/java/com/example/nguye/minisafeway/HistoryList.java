@@ -83,24 +83,22 @@ public class HistoryList extends AppCompatActivity {
 
 
     private synchronized void loadListFood() {
-        //oAdapter = new OrderRVadapter(this, aFoodList);
-        adapter = new FirebaseRecyclerAdapter<Food, HistoryHolder>(Food.class,R.layout.history_layout,HistoryHolder.class, orderHistoryList.orderByChild("userId").equalTo(Common.currentUser.getId())) {
+        adapter = new FirebaseRecyclerAdapter<Food, HistoryHolder>(Food.class,R.layout.history_layout,HistoryHolder.class,orderHistoryList.orderByChild("userId").equalTo(Common.currentUser.getId())) {
             @Override
             protected void populateViewHolder(HistoryHolder viewHolder, Food model, int position) {
                 viewHolder.cart_item_name.setText(model.getName());
                 viewHolder.cart_item_price.setText(model.getPrice());
+
+                System.out.println("model why must???" + model.getImage());
+
+
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
-                final String local = model.getMenuID();
-
-                //System.out.println("This is the damn menuid that crashes b4" + aOrderList.get(position).getFoodId());
-
+                final Food local = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         Intent foodDetail = new Intent(com.example.nguye.minisafeway.HistoryList.this, FoodDetail.class);
-                        //System.out.println("This is the damn menuid that crashes after" + aOrderList.get(position).getFoodId());
                         foodDetail.putExtra("FoodId",aOrderList.get(position).getFoodId()); //// bad
-                        //foodDetail.putExtra("FoodId",adapter.getRef(position).getKey());
                         startActivity(foodDetail);
                     }
                 });
@@ -108,4 +106,5 @@ public class HistoryList extends AppCompatActivity {
         };
         recyclerView.setAdapter(adapter);
     }
+
 }
