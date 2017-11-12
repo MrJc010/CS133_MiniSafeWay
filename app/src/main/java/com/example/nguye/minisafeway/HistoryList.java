@@ -59,7 +59,7 @@ public class HistoryList extends AppCompatActivity {
     DatabaseReference foodList;
 
     String categoryId = "";
-    FirebaseRecyclerAdapter<History, HistoryHolder> adapter;
+    FirebaseRecyclerAdapter<Food, HistoryHolder> adapter;
 
 
     @Override
@@ -80,13 +80,13 @@ public class HistoryList extends AppCompatActivity {
 
 
     private void loadListFood() {
-        adapter = new FirebaseRecyclerAdapter<History, HistoryHolder>(History.class,R.layout.history_layout,HistoryHolder.class,foodList.orderByChild("userId").equalTo(Common.currentUser.getId())) {
+        adapter = new FirebaseRecyclerAdapter<Food, HistoryHolder>(Food.class,R.layout.history_layout,HistoryHolder.class,foodList.orderByChild("userId").equalTo(Common.currentUser.getId())) {
             @Override
-            protected void populateViewHolder(HistoryHolder viewHolder, History model, int position) {
+            protected void populateViewHolder(HistoryHolder viewHolder, Food model, int position) {
                 viewHolder.cart_item_name.setText(model.getName());
                 viewHolder.cart_item_price.setText(model.getPrice());
-                //Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
-                final History local = model;
+                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
+                final Food local = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {

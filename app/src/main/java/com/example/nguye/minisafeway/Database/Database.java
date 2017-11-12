@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 public class Database extends SQLiteAssetHelper{
-    private static final String DB_NAME="dbminiapp.db";
+    private static final String DB_NAME="minidata.db";
     private static final int DB_VER = 1;
     public Database(Context context){
         super(context,DB_NAME,null,DB_VER);
@@ -28,7 +28,7 @@ public class Database extends SQLiteAssetHelper{
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String[] sqlSelect = {"Name", "FoodId", "Quantity", "Price", "Discount","UserId"};
+        String[] sqlSelect = {"Name", "FoodId", "Quantity", "Price", "Discount","UserId","Image"};
         String sqlTable = "OrderDetail";
 
         qb.setTables(sqlTable);
@@ -42,7 +42,8 @@ public class Database extends SQLiteAssetHelper{
                         c.getString(c.getColumnIndex("Quantity")),
                         c.getString(c.getColumnIndex("Price")),
                         c.getString(c.getColumnIndex("Discount")),
-                        c.getString(c.getColumnIndex("UserId"))));
+                        c.getString(c.getColumnIndex("UserId")),
+                        c.getString(c.getColumnIndex("Image"))));
             } while(c.moveToNext());
         }
         return result;
@@ -50,8 +51,8 @@ public class Database extends SQLiteAssetHelper{
 
     public void addToCart(Order order) {
         SQLiteDatabase db = getReadableDatabase();
-        String query = String.format("INSERT INTO OrderDetail (FoodId,Name,Quantity,Price,Discount,UserId) VALUES('%s' ,'%s' ,'%s','%s','%s','%s');",
-                order.getProductId(),order.getProductName(),order.getQuantity(),order.getPrice(),order.getDiscount(), Common.currentUser.getId());
+        String query = String.format("INSERT INTO OrderDetail (FoodId,Name,Quantity,Price,Discount,UserId,Image) VALUES('%s' ,'%s' ,'%s' ,'%s','%s','%s','%s');",
+                order.getFoodId(),order.getName(),order.getQuantity(),order.getPrice(),order.getDiscount(), Common.currentUser.getId(),order.getImage());
         db.execSQL(query);
     }
 
