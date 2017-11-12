@@ -123,9 +123,9 @@ public class Cart extends AppCompatActivity {
         cart = new Database(this).getCarts();
         adapter = new CartAdapter(cart, this);
         recyclerView.setAdapter(adapter);
-        int total = 0;
+        double total = 0;
         for(Order order:cart){
-            total += (Integer.parseInt(order.getPrice()))*(Integer.parseInt(order.getQuantity()));
+            total += (Double.parseDouble(order.getPrice()))*(Double.parseDouble(order.getQuantity()));
         }
         Locale locale = new Locale("en","US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
