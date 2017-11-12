@@ -65,7 +65,7 @@ public class FoodList extends AppCompatActivity {
 
         materialSearchBar = (MaterialSearchBar) findViewById(R.id.searchBar);
         materialSearchBar.setHint("Search...");
-       // materialSearchBar.setSpeechMode(false);
+        // materialSearchBar.setSpeechMode(false);
 
         loadSuggest();
 
@@ -161,15 +161,15 @@ public class FoodList extends AppCompatActivity {
             protected void populateViewHolder(FoodViewHolder viewHolder, Food model, int position) {
                 viewHolder.food_name.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
-            final Food local = model;
-            viewHolder.setItemClickListener(new ItemClickListener() {
-                @Override
-                public void onClick(View view, int position, boolean isLongClick) {
-                    Intent foodDetail = new Intent(FoodList.this, FoodDetail.class);
-                    foodDetail.putExtra("FoodId",adapter.getRef(position).getKey());
-                    startActivity(foodDetail);
-                }
-            });
+                final Food local = model;
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        Intent foodDetail = new Intent(FoodList.this, FoodDetail.class);
+                        foodDetail.putExtra("FoodId",adapter.getRef(position).getKey());
+                        startActivity(foodDetail);
+                    }
+                });
             }
         };
         recyclerView.setAdapter(adapter);

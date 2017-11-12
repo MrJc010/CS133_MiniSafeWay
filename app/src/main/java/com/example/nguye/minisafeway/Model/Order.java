@@ -1,40 +1,46 @@
 package com.example.nguye.minisafeway.Model;
 
+import android.widget.ImageView;
+
 /**
  * Created by nguye on 11/5/2017.
  */
 
 public class Order {
-    private String ProductId;
-    private String ProductName;
+    private String FoodId;
+    private String Name;
     private String Quantity;
     private String Price;
     private String Discount;
+    private String UserId;
+    private String Image;
 
     public Order(){}
 
-    public Order(String productId, String productName, String quantity, String price, String discount) {
-        ProductId = productId;
-        ProductName = productName;
+    public Order(String productId, String productName, String quantity, String price, String discount, String userId, String image) {
+        FoodId = productId;
+        Name = productName;
         Quantity = quantity;
         Price = price;
         Discount = discount;
+        UserId = userId;
+        Image = image;
     }
 
-    public String getProductId() {
-        return ProductId;
+    public String getFoodId() {
+        return FoodId;
     }
 
-    public void setProductId(String productId) {
-        ProductId = productId;
+    public void setFoodId(String foodId) {
+        FoodId = foodId;
     }
 
-    public String getProductName() {
-        return ProductName;
+    public String getName() {
+        return Name;
     }
 
-    public void setProductName(String productName) {
-        ProductName = productName;
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getQuantity() {
@@ -59,5 +65,21 @@ public class Order {
 
     public void setDiscount(String discount) {
         Discount = discount;
+    }
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 }

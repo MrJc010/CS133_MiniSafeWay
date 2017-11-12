@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,18 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Interface.ItemClickListener;
 import com.example.nguye.minisafeway.Model.Category;
+import com.example.nguye.minisafeway.Model.History;
 import com.example.nguye.minisafeway.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
 
 public class Home extends AppCompatActivity
@@ -92,9 +89,7 @@ public class Home extends AppCompatActivity
 
         loadMenu();
 
-
         mAuth = FirebaseAuth.getInstance();
-        /*
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -103,7 +98,6 @@ public class Home extends AppCompatActivity
                 }
             }
         };
-        */
 
     }
 
@@ -175,15 +169,13 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_cart) {
 
         } else if (id == R.id.nav_order) {
-            Intent i = new Intent(Home.this,History.class);
+            Intent i = new Intent(Home.this,HistoryList.class);
             startActivity(i);
 
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_out) {
-            Common.currentUser.setName(null);
             mAuth.signOut();
-
             startActivity(new Intent(Home.this, Signin.class));
         }
 

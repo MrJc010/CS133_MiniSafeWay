@@ -63,6 +63,7 @@ public class FoodDetail extends AppCompatActivity {
            numberButton.removeAllViews();
        }
 
+
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,8 +71,9 @@ public class FoodDetail extends AppCompatActivity {
                         foodId, currentFood.getName(),
                         numberButton.getNumber(),
                         currentFood.getPrice(),
-                        currentFood.getDiscount()
-
+                        currentFood.getDiscount(),
+                        Common.currentUser.getId(),
+                        currentFood.getImage()
                 ));
 
                 Toast.makeText(FoodDetail.this,"Added to Cart",Toast.LENGTH_SHORT).show();
@@ -97,18 +99,23 @@ public class FoodDetail extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsedAppbar);
-        
+
+
         if(getIntent() != null){
             foodId = getIntent().getStringExtra("FoodId");
+            System.out.println("Intent isn't null...");
         }
         if(!foodId.isEmpty()){
             getDetailFood(foodId);
+            System.out.println("foodID string Exists!!!");
         }
 
     }
 
 
     private void getDetailFood(String foodId) {
+        System.out.println("This is the damn foodID" + foodId);
+
         foods.child(foodId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
