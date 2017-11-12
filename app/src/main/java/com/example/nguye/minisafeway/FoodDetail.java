@@ -1,6 +1,7 @@
 package com.example.nguye.minisafeway;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -16,12 +17,15 @@ import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Database.Database;
 import com.example.nguye.minisafeway.Model.Food;
 import com.example.nguye.minisafeway.Model.Order;
+import com.example.nguye.minisafeway.Model.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
 
 public class FoodDetail extends AppCompatActivity {
 
@@ -48,6 +52,16 @@ public class FoodDetail extends AppCompatActivity {
 
         numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
         btnCart = (FloatingActionButton) findViewById(R.id.btnCart);
+        String name="";
+        try{
+            name = Common.currentUser.getName();
+       }catch (NullPointerException e){
+            name=null;
+        }
+        if(name==null) {
+           btnCart.hide();
+           numberButton.removeAllViews();
+       }
 
 
         btnCart.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +112,7 @@ public class FoodDetail extends AppCompatActivity {
 
     }
 
+
     private void getDetailFood(String foodId) {
         System.out.println("This is the damn foodID" + foodId);
 
@@ -112,7 +127,6 @@ public class FoodDetail extends AppCompatActivity {
                 food_description.setText(currentFood.getDescription());
                 discount.setText(currentFood.getDiscount());
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
