@@ -43,12 +43,12 @@ public class HistoryList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_list);
+        setContentView(R.layout.activity_history);
 
         database = FirebaseDatabase.getInstance();
         orderHistoryList = database.getReference("History");
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_food);
+        recyclerView = (RecyclerView) findViewById(R.id.orderRCList);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -81,7 +81,6 @@ public class HistoryList extends AppCompatActivity {
 
     }
 
-
     private synchronized void loadListFood() {
         adapter = new FirebaseRecyclerAdapter<Food, HistoryHolder>(Food.class,R.layout.history_layout,HistoryHolder.class,orderHistoryList.orderByChild("userId").equalTo(Common.currentUser.getId())) {
             @Override
@@ -106,5 +105,4 @@ public class HistoryList extends AppCompatActivity {
         };
         recyclerView.setAdapter(adapter);
     }
-
 }
