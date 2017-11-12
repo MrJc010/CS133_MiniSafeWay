@@ -49,6 +49,7 @@ public class FoodDetail extends AppCompatActivity {
         numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
         btnCart = (FloatingActionButton) findViewById(R.id.btnCart);
 
+
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,24 +85,26 @@ public class FoodDetail extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsedAppbar);
-        
+
+
         if(getIntent() != null){
             foodId = getIntent().getStringExtra("FoodId");
+            System.out.println("Intent isn't null...");
         }
         if(!foodId.isEmpty()){
             getDetailFood(foodId);
+            System.out.println("foodID string Exists!!!");
         }
-        
-
 
     }
 
     private void getDetailFood(String foodId) {
+        System.out.println("This is the damn foodID" + foodId);
+
         foods.child(foodId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 currentFood = dataSnapshot.getValue(Food.class);
-
                 Picasso.with(getBaseContext()).load(currentFood.getImage()).into(food_image);
                 collapsingToolbarLayout.setTitle(currentFood.getName());
                 food_price.setText(currentFood.getPrice());

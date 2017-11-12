@@ -16,6 +16,7 @@ public class HistoryHolder extends RecyclerView.ViewHolder implements View.OnCli
 
     public TextView cart_item_name;
     public TextView cart_item_price;
+
     private ItemClickListener itemClickListener;
     public ImageView food_image;
 
