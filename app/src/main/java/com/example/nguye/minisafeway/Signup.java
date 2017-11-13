@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Model.Order;
 import com.example.nguye.minisafeway.Model.Request;
 import com.example.nguye.minisafeway.Model.User;
@@ -47,31 +48,35 @@ public class Signup extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Common.isConnectedToInternet(getBaseContext())) {
 //                final ProgressDialog mDialog = new ProgressDialog(Signup.this);
-                final AlertDialog OptionDialog = new AlertDialog.Builder(Signup.this).create();
-                OptionDialog.setTitle("Username is used");
-                OptionDialog.setMessage("Please enter different username");
-                OptionDialog.show();
+                    final AlertDialog OptionDialog = new AlertDialog.Builder(Signup.this).create();
+                    OptionDialog.setTitle("Username is used");
+                    OptionDialog.setMessage("Please enter different username");
+                    OptionDialog.show();
 
-                table_user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(!dataSnapshot.child(edtUsername.getText().toString()).exists()) {
-                            //mDialog.dismiss();
-                            OptionDialog.dismiss();
-                            User user = new User(edtUsername.getText().toString(),edtName.getText().toString(), edtPassword.getText().toString(),requests);
-                            table_user.child(edtUsername.getText().toString()).setValue(user);
-                            Toast.makeText(Signup.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
-                            finish();
-                    }
-                    }
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (!dataSnapshot.child(edtUsername.getText().toString()).exists()) {
+                                //mDialog.dismiss();
+                                OptionDialog.dismiss();
+                                User user = new User(edtUsername.getText().toString(), edtName.getText().toString(), edtPassword.getText().toString(), requests);
+                                table_user.child(edtUsername.getText().toString()).setValue(user);
+                                Toast.makeText(Signup.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+                } else{
+                    Toast.makeText(Signup.this, "Please check your connection!", Toast.LENGTH_SHORT).show();
+
+                }
 
 
 

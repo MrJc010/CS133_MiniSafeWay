@@ -3,6 +3,7 @@ package com.example.nguye.minisafeway.ViewHolder;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Interface.ItemClickListener;
 import com.example.nguye.minisafeway.Model.Order;
 import com.example.nguye.minisafeway.R;
@@ -23,7 +25,7 @@ import java.util.Locale;
  * Created by nguye on 11/5/2017.
  */
 
-class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener{
     public TextView txt_cart_name,txt_price;
     public ImageView img_cart_count;
 
@@ -38,6 +40,7 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
         txt_cart_name = (TextView) itemView.findViewById(R.id.cart_item_name);
         txt_price = (TextView) itemView.findViewById(R.id.cart_item_price);
         img_cart_count = (ImageView) itemView.findViewById(R.id.cart_item_count);
+        itemView.setOnCreateContextMenuListener(this);
     }
 
     @Override
@@ -45,6 +48,12 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
 
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+        contextMenu.setHeaderTitle("Select Action");
+        contextMenu.add(0,0,getAdapterPosition(), Common.DELETE);
     }
 }
 
@@ -68,7 +77,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
 
     @Override
     public void onBindViewHolder(CartViewHolder holder, int position) {
-        TextDrawable drawable = TextDrawable.builder().buildRound(""+listData.get(position).getQuantity(), Color.RED);
+        TextDrawable drawable = TextDrawable.builder().buildRound(""+listData.get(position).getQuantity(), Color.BLACK);
         holder.img_cart_count.setImageDrawable(drawable);
 
         Locale locale = new Locale("en","US");
@@ -83,4 +92,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
     public int getItemCount() {
         return listData.size();
     }
+
+
 }
