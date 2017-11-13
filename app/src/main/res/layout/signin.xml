@@ -57,7 +57,7 @@
                 android:hint="User Name"
                 android:text=""
                 android:inputType="textPersonName"
-                android:textColorHint="@color/colorPrimary"
+                android:textColorHint="#33A2FF "
                 android:textStyle="italic" />
 
             <EditText
@@ -69,7 +69,7 @@
                 android:hint="Password"
                 android:text=""
                 android:inputType="textPassword"
-                android:textColorHint="@color/colorPrimary"
+                android:textColorHint="#33A2FF "
                 android:textStyle="italic" />
 
             <Button
@@ -81,17 +81,6 @@
                 android:text="Log In"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/bt_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="20dp"
-                android:foregroundGravity="top|center_vertical|center">
-
-            </com.google.android.gms.common.SignInButton>
 
             <GridLayout
                 android:layout_width="wrap_content"
@@ -105,27 +94,26 @@
                     android:id="@+id/btnGuest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/white"
+                    android:background="@null"
                     android:text="View As Guest"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="#33A2FF " />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="10dp"
-                    android:background="@android:color/white"
                     android:text="OR"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#33A2FF "
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnSignUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/white"
+                    android:background="@null"
                     android:text="Sign Up"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="#33A2FF " />
 
             </GridLayout>
         </LinearLayout>

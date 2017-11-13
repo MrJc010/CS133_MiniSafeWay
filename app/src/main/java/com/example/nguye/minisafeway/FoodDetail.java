@@ -103,11 +103,14 @@ public class FoodDetail extends AppCompatActivity {
 
         if(getIntent() != null){
             foodId = getIntent().getStringExtra("FoodId");
-            System.out.println("Intent isn't null...");
         }
         if(!foodId.isEmpty()){
-            getDetailFood(foodId);
-            System.out.println("foodID string Exists!!!");
+            if(Common.isConnectedToInternet(getApplicationContext())) {
+                getDetailFood(foodId);
+            }else{
+                Toast.makeText(FoodDetail.this, "Please check your connection!", Toast.LENGTH_SHORT).show();
+
+            }
         }
 
     }

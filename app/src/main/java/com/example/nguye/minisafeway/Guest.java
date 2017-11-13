@@ -112,6 +112,14 @@ public class Guest extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.refresh){
+            loadMenu();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
     @SuppressWarnings("StatementWithEmptyBody")

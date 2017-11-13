@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Interface.ItemClickListener;
 import com.example.nguye.minisafeway.Model.Food;
 import com.example.nguye.minisafeway.ViewHolder.FoodViewHolder;
@@ -60,7 +61,11 @@ public class FoodList extends AppCompatActivity {
             categoryId = getIntent().getStringExtra("test");
         }
         if(!categoryId.isEmpty() && categoryId != null){
-            loadListFood(categoryId);
+            if(Common.isConnectedToInternet(getBaseContext())) {
+                loadListFood(categoryId);
+            }else{
+                Toast.makeText(FoodList.this, "Please check your connection!", Toast.LENGTH_SHORT).show();
+            }
         }
 
         materialSearchBar = (MaterialSearchBar) findViewById(R.id.searchBar);

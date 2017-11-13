@@ -17,7 +17,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Interface.ItemClickListener;
 import com.example.nguye.minisafeway.Model.Category;
 import com.example.nguye.minisafeway.Model.History;
@@ -33,18 +35,10 @@ public class Home extends AppCompatActivity
 
     DatabaseReference category;
     FirebaseDatabase database;
+    TextView txtFullName;
     RecyclerView recycler_menu;
     LinearLayoutManager layoutManager;
-    FirebaseAuth mAuth;
-    FirebaseAuth.AuthStateListener mAuthListener;
-    TextView txtFullName;
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        mAuth.addAuthStateListener(mAuthListener);
-//    }
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -78,26 +72,23 @@ public class Home extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        View headerView = navigationView.getHeaderView(1);
-//        txtFullName = (TextView)headerView.findViewById(R.id.txtFullName);
-//        txtFullName.setText(Common.currentUser.getName());
+        View headerView  = navigationView.getHeaderView(0);
+        txtFullName = (TextView)headerView.findViewById(R.id.txtFullName);
+        txtFullName.setText(Common.currentUser.getName());
+
+
 
         recycler_menu = (RecyclerView) findViewById(R.id.recycler_menu);
         recycler_menu.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
 
-        loadMenu();
+        if(Common.isConnectedToInternet(this)) {
+            loadMenu();
+        }else{
+            Toast.makeText(Home.this, "Please check your connection!", Toast.LENGTH_SHORT).show();
 
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() == null){
-                    startActivity(new Intent(Home.this, Signin.class));
-                }
-            }
-        };
+        }
 
     }
 
@@ -143,20 +134,13 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.refresh){
+            loadMenu();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -175,8 +159,12 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_out) {
-            mAuth.signOut();
-            startActivity(new Intent(Home.this, Signin.class));
+            Common.currentUser.setName(null);
+            Intent signIn = new Intent(Home.this, Signin.class);
+            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signIn);
+            finish();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
