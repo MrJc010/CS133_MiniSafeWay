@@ -32,7 +32,7 @@ public class FoodDetail extends AppCompatActivity {
     TextView food_name, food_price, food_description,discount;
     ImageView food_image;
     CollapsingToolbarLayout collapsingToolbarLayout;
-    FloatingActionButton btnCart, home;
+    FloatingActionButton btnCart, home,home2;
     ElegantNumberButton numberButton;
 
     String foodId= "";
@@ -52,6 +52,8 @@ public class FoodDetail extends AppCompatActivity {
 
         numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
         btnCart = (FloatingActionButton) findViewById(R.id.btnCart);
+        home = (FloatingActionButton) findViewById(R.id.home);
+        home2 = (FloatingActionButton) findViewById(R.id.home2);
         String name="";
         try{
             name = Common.currentUser.getName();
@@ -86,12 +88,22 @@ public class FoodDetail extends AppCompatActivity {
         food_image = (ImageView) findViewById(R.id.img_food);
         discount = (TextView) findViewById(R.id.discount);
 
-        home = (FloatingActionButton) findViewById(R.id.home);
+        if(name!=null){
+            home2.hide();
+        }
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(FoodDetail.this, Home.class);
+                startActivity(i);
+            }
+        });
+
+        home2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(FoodDetail.this, Guest.class);
                 startActivity(i);
             }
         });
