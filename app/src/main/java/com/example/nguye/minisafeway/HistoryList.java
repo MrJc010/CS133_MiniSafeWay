@@ -2,6 +2,7 @@ package com.example.nguye.minisafeway;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +37,8 @@ public class HistoryList extends AppCompatActivity {
     FirebaseRecyclerAdapter<Food, HistoryHolder> adapter;
     OrderRVadapter oAdapter;
 
+    FloatingActionButton home;
+
     ArrayList<Order> aOrderList = new ArrayList<Order>();
     String currentUser = Common.currentUser.getId();
 
@@ -55,6 +58,15 @@ public class HistoryList extends AppCompatActivity {
 
         //orderHistoryList.orderByChild("userId").equalTo(Common.currentUser.getId());
         loadLocalDatabase(orderHistoryList);
+        home = (FloatingActionButton) findViewById(R.id.home);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HistoryList.this, Home.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void loadLocalDatabase (DatabaseReference db) {
