@@ -42,7 +42,7 @@
         </LinearLayout>
         <Button
             android:id="@+id/bdecrease"
-            android:background="white"
+            android:background="ffffff"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:onClick="decreaseInteger"
@@ -56,7 +56,7 @@
             android:layout_marginRight="16dp" />
         <Button
             android:id="@+id/bincrease"
-            android:background="white"
+            android:background="ffffff"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:onClick="increaseInteger"
