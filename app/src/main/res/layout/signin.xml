@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
+    android:background="@android:color/white"
         tools:context="com.example.nguye.minisafeway.Signin">
 
 
@@ -28,7 +28,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="271dp"
-                android:src="@drawable/smallicon" />
+                android:src="@drawable/signlogo" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
