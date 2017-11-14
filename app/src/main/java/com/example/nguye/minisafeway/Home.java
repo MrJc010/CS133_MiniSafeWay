@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nguye.minisafeway.Common.Common;
+import com.example.nguye.minisafeway.Database.Database;
 import com.example.nguye.minisafeway.Interface.ItemClickListener;
 import com.example.nguye.minisafeway.Model.Category;
 import com.example.nguye.minisafeway.Model.History;
@@ -162,6 +163,7 @@ public class Home extends AppCompatActivity
             Common.currentUser.setName(null);
             Intent signIn = new Intent(Home.this, Signin.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            new Database(getBaseContext()).cleanCart();
             startActivity(signIn);
             finish();
 
