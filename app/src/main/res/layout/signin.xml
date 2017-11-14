@@ -82,40 +82,32 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <GridLayout
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:foregroundGravity="center_horizontal"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="vertical">
+
 
                 <Button
                     android:id="@+id/btnGuest"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="20dp"
                     android:background="@null"
+                    android:gravity="center_vertical"
                     android:text="View As Guest"
                     android:textColor="#33A2FF " />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="10dp"
-                    android:text="OR"
-                    android:textColor="#33A2FF "
-                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnSignUp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:background="@null"
                     android:text="Sign Up"
                     android:textColor="#33A2FF " />
 
-            </GridLayout>
+            </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
