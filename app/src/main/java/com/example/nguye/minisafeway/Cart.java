@@ -88,21 +88,6 @@ public class Cart extends AppCompatActivity {
         View mView = getLayoutInflater().inflate(R.layout.dialog_checkout,null);
         alertDialog.setTitle("One more step");
         alertDialog.setMessage("Enter your card number and address: ");
-
-        final EditText edtAddress = new EditText(Cart.this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        );
-        edtAddress.setLayoutParams(lp);
-
-        final EditText edtAccount = new EditText(Cart.this);
-        LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        );
-        edtAccount.setLayoutParams(lp1);
-
         alertDialog.setView(mView);
         alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
 
