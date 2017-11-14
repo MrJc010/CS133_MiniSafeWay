@@ -129,7 +129,6 @@ public class FoodDetail extends AppCompatActivity {
 
 
     private void getDetailFood(String foodId) {
-        System.out.println("This is the damn foodID" + foodId);
 
         foods.child(foodId).addValueEventListener(new ValueEventListener() {
             @Override
