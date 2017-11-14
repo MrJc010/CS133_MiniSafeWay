@@ -63,7 +63,7 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="Customer name"
                 android:inputType="textPersonName"
@@ -80,7 +80,6 @@
                 android:inputType="textPassword"
                 android:textColorHint="#33A2FF"
                 android:textStyle="italic" />
-
 
             <Button
                 android:id="@+id/btnSignup"

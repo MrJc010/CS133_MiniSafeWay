@@ -150,7 +150,8 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
+            Intent i = new Intent(Home.this,WishList.class);
+            startActivity(i);
         } else if (id == R.id.nav_cart) {
             Intent i = new Intent(Home.this,Cart.class);
             startActivity(i);

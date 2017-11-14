@@ -26,13 +26,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class FoodDetail extends AppCompatActivity {
 
     TextView food_name, food_price, food_description,discount;
     ImageView food_image;
     CollapsingToolbarLayout collapsingToolbarLayout;
-    FloatingActionButton btnCart, home,home2;
+    FloatingActionButton btnCart,btnWish, home,home2;
     ElegantNumberButton numberButton;
 
     String foodId= "";
@@ -40,8 +43,11 @@ public class FoodDetail extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference foods;
 
+    DatabaseReference wish;
+
     Food currentFood;
 
+    List<Order> cart = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +55,11 @@ public class FoodDetail extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         foods = database.getReference("Foods");
+        wish = database.getReference("Wishlist");
 
         numberButton = (ElegantNumberButton) findViewById(R.id.number_button);
         btnCart = (FloatingActionButton) findViewById(R.id.btnCart);
+        btnWish = (FloatingActionButton) findViewById(R.id.btnWish);
         home = (FloatingActionButton) findViewById(R.id.home);
         home2 = (FloatingActionButton) findViewById(R.id.home2);
         String name="";
@@ -62,9 +70,28 @@ public class FoodDetail extends AppCompatActivity {
         }
         if(name==null) {
            btnCart.hide();
+            btnWish.hide();
            numberButton.removeAllViews();
        }
 
+
+        btnWish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Order order = new Order(
+                        foodId, currentFood.getName(),
+                        numberButton.getNumber(),
+                        currentFood.getPrice(),
+                        currentFood.getDiscount(),
+                        Common.currentUser.getId(),
+                        currentFood.getImage()
+                );
+
+                wish.push().setValue(order);
+
+                Toast.makeText(FoodDetail.this,"Added to your Wishlist",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override

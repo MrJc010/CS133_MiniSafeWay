@@ -5,4 +5,5 @@
     <color name="colorAccent"> #99D0FF </color>
     <color name="overlayBackGround">#ff7f7f</color>
     <color name="overlayActionBar">#7f333639</color>
+    <color name="darkerBlue">#327EC9</color>
 </resources>
