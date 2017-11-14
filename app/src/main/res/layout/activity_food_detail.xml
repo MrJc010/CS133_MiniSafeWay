@@ -39,7 +39,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnCart"
-        android:src="@drawable/ic_shopping_cart_black_24dp"
+        android:src="@drawable/ic_add_shopping_cart_black_24dp"
         android:backgroundTint="@android:color/white"
         android:elevation="6dp"
         app:pressedTranslationZ="12dp"
