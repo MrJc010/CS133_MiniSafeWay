@@ -30,8 +30,9 @@
             android:name=".Guest"
             android:label="@string/title_activity_guest"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Signin"></activity>
-        <activity android:name=".WishList"></activity>
+        <activity android:name=".Signin" />
+        <activity android:name=".WishList" />
+        <activity android:name=".Aboutus"></activity>
     </application>
 
 </manifest>

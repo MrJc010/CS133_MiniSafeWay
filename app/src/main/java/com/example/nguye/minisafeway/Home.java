@@ -161,6 +161,8 @@ public class Home extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_about) {
+            Intent i = new Intent(Home.this,Aboutus.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_out) {
             Common.currentUser.setName(null);
