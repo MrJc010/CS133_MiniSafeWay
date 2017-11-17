@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CS133_MiniSafeWay.iml" filepath="$PROJECT_DIR$/CS133_MiniSafeWay.iml" />
       <module fileurl="file://D:\GitHub Clones\CS133_MiniSafeWay\CS133_MiniSafeWay.iml" filepath="D:\GitHub Clones\CS133_MiniSafeWay\CS133_MiniSafeWay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CS133_MiniSafeWay.iml" filepath="$PROJECT_DIR$/CS133_MiniSafeWay.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://D:\GitHub Clones\CS133_MiniSafeWay\app\app.iml" filepath="D:\GitHub Clones\CS133_MiniSafeWay\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

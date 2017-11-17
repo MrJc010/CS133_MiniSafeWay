@@ -123,6 +123,62 @@
       },
       "oauth_client": [
         {
+          "client_id": "982700536511-tfd52fajqajnahienas2v821prlhk61g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "6774555fae5e1dd8a4dd92d5b4325e99dcdfb955"
+          }
+        },
+        {
+          "client_id": "982700536511-d9eosob4b6tamj16csc1r3aplepm1e2p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "c6c3704e7ed44bad3da2061194a8f8b3e95d2085"
+          }
+        },
+        {
+          "client_id": "982700536511-rlcnauol4kf390f6ubfi73ar8pbtp2le.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "a47f61f031136331418a906dedd1c5edb42168ad"
+          }
+        },
+        {
+          "client_id": "982700536511-p2jt7309kn47t7l8oc34o3f1t8q5dlvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "39681f3b494efe44c9d1a42fa97c83ba872f1499"
+          }
+        },
+        {
+          "client_id": "982700536511-86ofklhm9r2gnc4gg78ejhl455cdvuv1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "d4b284fb2a9fa8159c9199cb397749f939acb22b"
+          }
+        },
+        {
+          "client_id": "982700536511-lm2m51ju0od1i31ituu0h39c5ts2fcen.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "e990933f68f908f1c6c0caa704299c959925bbff"
+          }
+        },
+        {
+          "client_id": "982700536511-1o8naepjvvuj3mbdngn32v0ai10j1mb1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguye.minisafeway",
+            "certificate_hash": "ce63a052edc0c7c0cb6506f6ccffbd3b228844d6"
+          }
+        },
+        {
           "client_id": "982700536511-avu9be04n5fuv098trbqt6pqstqcjr8d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
