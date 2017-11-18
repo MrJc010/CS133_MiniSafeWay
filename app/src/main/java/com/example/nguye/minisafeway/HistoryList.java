@@ -1,6 +1,7 @@
 package com.example.nguye.minisafeway;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.nguye.minisafeway.Common.Common;
 import com.example.nguye.minisafeway.Interface.ItemClickListener;
 import com.example.nguye.minisafeway.Model.Food;
@@ -83,7 +85,6 @@ public class HistoryList extends AppCompatActivity {
                         //System.out.println("This is the order " + order);
                     }
                 }
-                System.out.println("This is size of request in Anon Class: " + aOrderList.size());
                 loadListFood();
             }
             @Override
@@ -99,8 +100,7 @@ public class HistoryList extends AppCompatActivity {
             protected void populateViewHolder(HistoryHolder viewHolder, Food model, int position) {
                 viewHolder.cart_item_name.setText(model.getName());
                 viewHolder.cart_item_price.setText(model.getPrice());
-
-                System.out.println("model why must???" + model.getImage());
+                viewHolder.cart_item_quantity.setText(aOrderList.get(position).getQuantity());
 
 
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
