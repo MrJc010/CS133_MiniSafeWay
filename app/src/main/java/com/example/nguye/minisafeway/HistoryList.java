@@ -100,8 +100,7 @@ public class HistoryList extends AppCompatActivity {
             protected void populateViewHolder(HistoryHolder viewHolder, Food model, int position) {
                 viewHolder.cart_item_name.setText(model.getName());
                 viewHolder.cart_item_price.setText(model.getPrice());
-                //TextDrawable drawable = TextDrawable.builder().buildRound(""+listData.get(position).getQuantity(), Color.BLACK);
-                viewHolder.img_cart_count.setImageDrawable(new TextDrawable.builder().buildRound(""+ aOrderList.get(position).getQuantity(), Color.BLACK));
+                viewHolder.cart_item_quantity.setText(aOrderList.get(position).getQuantity());
 
 
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);

@@ -16,7 +16,7 @@ public class HistoryHolder extends RecyclerView.ViewHolder implements View.OnCli
 
     public TextView cart_item_name;
     public TextView cart_item_price;
-    public ImageView img_cart_count;
+    public TextView cart_item_quantity;
 
     private ItemClickListener itemClickListener;
     public ImageView food_image;
@@ -30,7 +30,7 @@ public class HistoryHolder extends RecyclerView.ViewHolder implements View.OnCli
         cart_item_name = (TextView) itemView.findViewById(R.id.cart_item_name);
         cart_item_price = (TextView) itemView.findViewById(R.id.cart_item_price);
         food_image = (ImageView) itemView.findViewById(R.id.food_image);
-        img_cart_count = (ImageView) itemView.findViewById(R.id.cart_item_count);
+        cart_item_quantity = (TextView) itemView.findViewById(R.id.cart_item_quantity);
         itemView.setOnClickListener(this);
     }
 
