@@ -132,7 +132,7 @@ public class Guest extends AppCompatActivity
             startActivity(new Intent(Guest.this, Signin.class));
 
         }  else if (id == R.id.nav_about_guest) {
-
+            startActivity(new Intent(Guest.this,Aboutus.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_guest);
