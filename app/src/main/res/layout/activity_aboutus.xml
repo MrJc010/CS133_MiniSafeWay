@@ -15,11 +15,18 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="About Us"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold" />"
         android:layout_weight="1"
         android:text="1. How to contact us?" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
         <TextView
             android:id="@+id/first_question"
@@ -34,6 +41,7 @@
             android:id="@+id/first_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:text="Customers can contact MiniSafeway Manager via: MiniSafway@gmail.com"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -50,6 +58,7 @@
             android:id="@+id/answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:text="This app provides customers a brand new experience of shopping. You can buy from a vast online market of products with just a tap of your thumb. This gives customers a seamless experience across our services."
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -66,6 +75,7 @@
             android:id="@+id/second_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:text="In order to use our services, you need an android phone with Internet connection such as Wifi or Cellular. Note that: Internet connection may incur extra charges depending on your carrier of choice."
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -82,6 +92,7 @@
             android:id="@+id/third_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:text="Customers' data will be handled carefully up to industry standards. We will not track your personal information or sell it to any third party company."
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -100,6 +111,7 @@
             android:layout_height="wrap_content"
             android:text="If you are dissatisfied with an item when it is delivered, notify your driver, and he/she will return it to the store and your credit card will receive a refund. If your driver is no longer present, please contact our customer service center to help resolve your issue. You can choose to receive a credit on your account toward your next online order, or a credit card refund. Note that certain items, including alcoholic beverages, baby formula and tobacco products, cannot be returned or refunded once you have accepted delivery.
 "
+            android:paddingBottom="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
