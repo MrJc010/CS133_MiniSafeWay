@@ -1,149 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.nguye.minisafeway.Aboutus">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView3"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="About Us"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />"
-        android:layout_weight="1"
-        android:text="1. How to contact us?" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="About Us"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />"
+            android:layout_weight="1"
+            android:text="1. How to contact us?" />
 
-        <TextView
-            android:id="@+id/first_question"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:text="How to contact us:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
 
-        <TextView
-            android:id="@+id/first_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="Customers can contact MiniSafeway Manager via: MiniSafway@gmail.com"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/first_question"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="How to contact us:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/topic"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:text="What is this app about?"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/first_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="Customers can contact MiniSafeway Manager via: MiniSafway@gmail.com"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="This app provides customers a brand new experience of shopping. You can buy from a vast online market of products with just a tap of your thumb. This gives customers a seamless experience across our services."
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/topic"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="What is this app about?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/topic_question"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:text="What are the requirements needed for this app to work?"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="This app provides customers a brand new experience of shopping. You can buy from a vast online market of products with just a tap of your thumb. This gives customers a seamless experience across our services."
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/second_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="In order to use our services, you need an android phone with Internet connection such as Wifi or Cellular. Note that: Internet connection may incur extra charges depending on your carrier of choice."
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/topic_question"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="What are the requirements needed for this app to work?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/third_question"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="How do you address customer's concerns regarding privacy and payment?"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/second_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="In order to use our services, you need an android phone with Internet connection such as Wifi or Cellular. Note that: Internet connection may incur extra charges depending on your carrier of choice."
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/third_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="Customers' data will be handled carefully up to industry standards. We will not track your personal information or sell it to any third party company."
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/third_question"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="How do you address customer's concerns regarding privacy and payment?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/fourth_question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Can I return an item purchased from Mini Safeway?"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/third_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="Customers' data will be handled carefully up to industry standards. We will not track your personal information or sell it to any third party company."
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/fourth_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="If you are dissatisfied with an item when it is delivered, notify your driver, and he/she will return it to the store and your credit card will receive a refund. If your driver is no longer present, please contact our customer service center to help resolve your issue. You can choose to receive a credit on your account toward your next online order, or a credit card refund. Note that certain items, including alcoholic beverages, baby formula and tobacco products, cannot be returned or refunded once you have accepted delivery.
+            <TextView
+                android:id="@+id/fourth_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Can I return an item purchased from Mini Safeway?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fourth_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="If you are dissatisfied with an item when it is delivered, notify your driver, and he/she will return it to the store and your credit card will receive a refund. If your driver is no longer present, please contact our customer service center to help resolve your issue. You can choose to receive a credit on your account toward your next online order, or a credit card refund. Note that certain items, including alcoholic beverages, baby formula and tobacco products, cannot be returned or refunded once you have accepted delivery.
 "
-            android:paddingBottom="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:paddingBottom="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/fifth_question"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="What if part of my delivery is incorrect? What should I do"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/fifth_question"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="What if part of my delivery is incorrect? What should I do"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/fifth_answer"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:text="If you receive an incorrect order, please notify your driver and you will receive a refund if applicable. If your driver is no longer present, please contact our Customer Service department. (Note: To receive a refund you must notify the Safeway.com Customer Service Center within 48 hours from the time of delivery with any issues pertaining to your order.)
+            <TextView
+                android:id="@+id/fifth_answer"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:text="If you receive an incorrect order, please notify your driver and you will receive a refund if applicable. If your driver is no longer present, please contact our Customer Service department. (Note: To receive a refund you must notify the Safeway.com Customer Service Center within 48 hours from the time of delivery with any issues pertaining to your order.)
 "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
+
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/home3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|left"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@android:color/white"
         app:srcCompat="@drawable/ic_home_black_24dp" />
-
-
-
-
 
 </android.support.design.widget.CoordinatorLayout>
